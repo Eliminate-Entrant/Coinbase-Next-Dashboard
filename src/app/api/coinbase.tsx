@@ -22,8 +22,9 @@ const getTradingPairs = async (): Promise<TradingPair[]> => {
 
 export const useTradingPairs = (): TradingPair[] => {
   const [tradingPairs, setTradingPairs] = useState<TradingPair[]>([]);
-
+  
   useEffect(() => {
+    console.log("Getting trading pairs")
     const fetchData = async () => {
       const jsonData = await getTradingPairs();
       setTradingPairs(jsonData);

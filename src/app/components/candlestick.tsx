@@ -1,7 +1,8 @@
-
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import { Symbols } from '../models/symbols';
+import Plot from 'react-plotly.js';
 
 interface CandlestickGraphProps {
   data: Symbols[];
@@ -22,8 +23,6 @@ const CandlestickGraph: React.FC<CandlestickGraphProps> = ({ data }) => {
     return <div className='flex justify-center items-center h-full font-bold'>No data available</div>;
   }
 
-  // Dynamic import Plotly.js when running in a browser environment to avoid SSR issues
-  const Plot = React.lazy(() => import('react-plotly.js'));
   if (data.length === 0) {
     return <div className='flex justify-center items-center h-full font-bold'>No data available</div>;
   }

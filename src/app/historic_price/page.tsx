@@ -21,6 +21,7 @@ const HistoricPrice: React.FC = () => {
   useEffect(() => {
     if (!selectedSymbol || selectedSymbol === "-") return;
     const fetchData = async () => {
+      console.log("Fetching symbol")
       const symbolData = await getSymbolPrice(selectedSymbol, selectedStartDate, selectedEndDate, selectedGranularity);
       setSymbolPrices(symbolData);
     };
@@ -57,7 +58,7 @@ const HistoricPrice: React.FC = () => {
         <div className="grow relative bg-gray-100">
         {selectedSymbol === "-" ? (
             <h1 className="flex justify-center items-center h-full font-bold">Please select a symbol</h1>):
-          <CandlestickChart data={symbolPrices} />
+           (<CandlestickChart data={symbolPrices} />)
         }
         </div>
         <div className="p-4">
