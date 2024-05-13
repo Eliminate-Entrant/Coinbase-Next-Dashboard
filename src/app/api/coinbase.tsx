@@ -35,7 +35,7 @@ export const useTradingPairs = (): TradingPair[] => {
   return tradingPairs;
 };
 
-export const tradingSymbols = (): string[] => {
+export const TradingSymbols = (): string[] => {
   const tradingPairs = useTradingPairs();
 
   const baseSymbols = useMemo(() => {

@@ -6,10 +6,10 @@ import DateRangePicker from "../components/daterange";
 import CandlestickChart from "../components/candlestick";
 import { Symbols, granularity_dict } from "../models/symbols";
 import { DropdownButton } from "../components/dropdown_button";
-import { tradingSymbols, getSymbolPrice } from "../api/coinbase";
+import { TradingSymbols, getSymbolPrice } from "../api/coinbase";
 
 const HistoricPrice: React.FC = () => {
-  const symbolsList = tradingSymbols();
+  const symbolsList = TradingSymbols();
   const [selectedSymbol, setSelectedSymbol] = useState<string>(symbolsList[0] ?? "-");
   const [selectedGranularity, setSelectedGranularity] = useState<number>(granularity_dict["1d"]);
   const [selectedGranularityKey, setSelectedGranularityKey] = useState<string>("1d");
