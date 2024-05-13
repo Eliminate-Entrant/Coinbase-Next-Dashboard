@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/code
+      - /code/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_COINBASE_API_BASE_URL
+      - NEXT_PUBLIC_COINBASE_API_BASE_URL_WSS
+      - NEXT_PUBLIC_COINBASE_API_KEY
+      - NEXT_PUBLIC_COINBASE_API_SECRET
+      - NEXT_PUBLIC_COINBASE_API_PASSPHRASE

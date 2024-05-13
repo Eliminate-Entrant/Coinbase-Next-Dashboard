@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Coinbase Dashboard using NextJS
 
-## Getting Started
+Dashboard to visualise trading product information. Users can look up all the trading symbols in the exchange and select historical prices of symbol based on:
+    - Start Date
+    - End Date
+    - Granularity 
 
-First, run the development server:
+#
+Before running dashboard, make an `.env` file in the root directory in one does not exist or add the following to your environment variable:
+    - `NEXT_PUBLIC_COINBASE_API_BASE_URL`
+    - `NEXT_PUBLIC_COINBASE_API_BASE_URL_WSS`
+    - `NEXT_PUBLIC_COINBASE_API_KEY`
+    - `NEXT_PUBLIC_COINBASE_API_SECRET`
+    - `NEXT_PUBLIC_COINBASE_API_PASSPHRASE`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Make sure all the environment variables are setup properly or else the dashbaord will throw an error.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#
+### 2 main ways to run dashboard:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. To run using **Docker**:
+    - Running Dashboard:
+        Type `make run` in terminal of root directory where Makefile is present
+        This should open a connection at `0.0.0.0:3000`, and so to view dashboard go to `127.0.0.1:3000`
+        Make sure the port numbers are the same as the docker one, check DockerFile
+    - Stopping docker-compose:
+        Type `docker-compose down`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. To run locally using **npm**:
+    - Install node dependencies:
+        Type `npm install`
+    - Build dashboard:
+        Type `npm run build`
+    - Running Dashboard:
+        Type `npm run sdevtart`
+        Should start at `localhost`
 
-## Learn More
+To run sample tests using cypress in root folder:
+    Type `npx cypress open`
+    - Open GUI in chrome or electron framework and choose tests from the ./cypress/e2e/tests folder
+    - There are 3 tests, one testbench for each page:
+        - Homepage
+        - Historic Prices
+        - Wallet Accounts
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Features of App:
 
-## Deploy on Vercel
+1. Landing page:
+    - Includes all trading pairs and their information in a scrollable table
+    - Includes Number of total trading pairs
+2. Historical page:
+    - Drop down menu to view and select of all available symbols
+    - Date range selection
+    - Granularity selection
+    - Candle-stick graph of selected symbol
+    - Line-plot graph of selected symbol with option to choose linegraph
+3. Account:
+    - Checks whether AUTH is working
+    - Gets all trading accounts of user based on api credentials given
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
